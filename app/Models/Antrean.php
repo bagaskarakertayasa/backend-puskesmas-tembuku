@@ -15,5 +15,6 @@ class Antrean extends Model
         'poli',
         'nomor_antrean',
         'status',
+        'waktu_panggil'
     ];
 }

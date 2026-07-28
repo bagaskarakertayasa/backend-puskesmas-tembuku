@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::post('/antrian', [AntreanController::class, 'store']);
+Route::post('/operator/antrian/{id}/panggil', [AntrianController::class, 'panggil']);
 
 Route::get('/antrian', [AntreanController::class, 'index']);
 
