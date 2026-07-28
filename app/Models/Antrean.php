@@ -3,16 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Antrean extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
     protected $fillable = [
+        'nama_antrean',
+        'kategori_prioritas',
         'poli',
-        'prioritas',
         'nomor_antrean',
         'status',
-        'waktu_ambil'
     ];
 }

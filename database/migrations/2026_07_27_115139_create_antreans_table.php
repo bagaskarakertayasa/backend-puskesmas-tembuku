@@ -14,14 +14,12 @@ return new class extends Migration
         Schema::create('antreans', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('poli', ['umum', 'kia', 'anak', 'gigi', 'imunisasi', 'ugd', 'kesehatan', 'surat', 'lain'])->default('umum');
-            $table->enum('prioritas', ['hamil', 'lansia', 'anak', 'disabilitas', 'gawat'])
-                ->nullable()
-                ->default(null);
+            $table->string('nama_antrean');
+            $table->string('poli');
+            $table->string('kategori_prioritas')->nullable();
             $table->string('nomor_antrean');
-            $table->enum('status', ['menunggu', 'dipanggil', 'selesai'])->default('menunggu');
-            $table->timestamp('waktu_ambil');
-
+            $table->enum('status', ['waiting', 'called', 'done'])->default('waiting');
+            $table->timestamp('waktu_panggil')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
