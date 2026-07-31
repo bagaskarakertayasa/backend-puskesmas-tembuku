@@ -23,4 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/operator/antrian', [OperatorController::class, 'getQueueList']);
     Route::post('/operator/antrian/{id}/panggil', [OperatorController::class, 'callQueue']);
     Route::post('/operator/antrian/{id}/selesai', [OperatorController::class, 'selesai']);
+
+    Route::get('/operator/export/csv', [OperatorController::class, 'exportCsv']);
+    Route::get('/operator/export/pdf', [OperatorController::class, 'exportPdf']);
 });
