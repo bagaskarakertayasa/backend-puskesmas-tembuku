@@ -12,6 +12,7 @@ class AntreanController extends Controller
     {
         // Ambil antrean yang statusnya 'called' dan diurutkan berdasarkan waktu dipanggil terbaru
         $antrian = Antrean::where('status', 'called')
+            ->orWhere('status', 'done')
             ->whereDate('created_at', now()->today())
             ->orderBy('waktu_panggil', 'desc')
             ->get();

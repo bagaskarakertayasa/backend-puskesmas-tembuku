@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Antrean;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -91,5 +92,27 @@ class OperatorController extends Controller
             'message' => "Memanggil antrean {$queue->nomor_antrean}",
             'data'    => $queue
         ]);
+    }
+
+    public function selesai($id): JsonResponse
+    {
+        $antrian = Antrean::find($id);
+
+        if (!$antrian) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data antrean tidak ditemukan.'
+            ], 404);
+        }
+
+        $antrian->update([
+            'status' => 'done'
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Antrean telah diselesaikan.',
+            'data'    => $antrian
+        ], 200);
     }
 }

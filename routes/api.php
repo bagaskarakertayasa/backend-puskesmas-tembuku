@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 Route::post('/antrian', [AntreanController::class, 'store']);
-Route::post('/operator/antrian/{id}/panggil', [AntrianController::class, 'panggil']);
+Route::post('/operator/antrian/{id}/panggil', [AntreanController::class, 'panggil']);
 
 Route::get('/antrian', [AntreanController::class, 'index']);
 
@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/operator/logout', [OperatorController::class, 'logout']);
     Route::get('/operator/antrian', [OperatorController::class, 'getQueueList']);
     Route::post('/operator/antrian/{id}/panggil', [OperatorController::class, 'callQueue']);
+    Route::post('/operator/antrian/{id}/selesai', [OperatorController::class, 'selesai']);
 });
