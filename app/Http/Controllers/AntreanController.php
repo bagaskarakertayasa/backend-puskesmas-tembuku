@@ -10,10 +10,8 @@ class AntreanController extends Controller
 {
     public function index()
     {
-        // Ambil antrean yang statusnya 'called' dan diurutkan berdasarkan waktu dipanggil terbaru
-        $antrian = Antrean::where('status', 'called')
-            ->orWhere('status', 'done')
-            ->whereDate('created_at', now()->today())
+        $antrian = Antrean::whereDate('created_at', today())
+            ->whereIn('status', ['called', 'done'])
             ->orderBy('waktu_panggil', 'desc')
             ->get();
 
@@ -85,7 +83,7 @@ class AntreanController extends Controller
         // 3. Kembalikan response JSON
         return response()->json([
             'success' => true,
-            'message' => 'Antrean berhasil dipanggil.',
+            'message' => 'Data Antrian berhasil diambil.',
             'data'    => $antrian
         ], 200);
     }
