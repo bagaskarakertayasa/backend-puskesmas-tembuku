@@ -23,7 +23,7 @@ class AntreanController extends Controller
         $validated = $request->validate([
             'nama_antrean'       => 'required|string',
             'kategori_prioritas' => 'nullable|string',
-            'poli'               => 'required|string',
+            'poli'               => 'nullable|string',
             'prefix'             => 'required|string', // A, B, C, atau D
         ]);
 
